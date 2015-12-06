@@ -6,6 +6,8 @@ Android多渠道打包工具
 使用方法
 -------------------------
 
+### 1、渠道包生成
+
 在脚本所在目录下：
 
 	python pack.py [path_to_apk] [path_to_config]
@@ -16,10 +18,19 @@ Android多渠道打包工具
 
 生成的所有渠道包会打包为一个output.zip文件，便于下载和传输。
 
+### 2、渠道名读取
+
+对应的，在Android应用中，可通过`ChannelHelper`提供的工具方法读取渠道名：
+
+	String channelName = ChannelHelper.getChannel(appContext);
+
+详见ChannelHelper.java。
+
 TODO
 -----------
 
-增加更多参数控制的支持，如生成的文件名、是否生成zip文件等。
+* 增加更多参数控制的支持，如生成的文件名、是否生成zip文件等。
+* 渠道名的读取封装为library。
 
 Acknowledge
 -----------
@@ -31,7 +42,7 @@ License
 
     MIT
     
-    Copyright (c) 2015 skynewborn@github.com
+    Copyright (c) 2015 skynewborn
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to deal
