@@ -5,21 +5,25 @@ import shutil
 import os
 import sys
 
+
 def add_channel_file(apk_file, channel_file, channel_name):
-	zipped = zipfile.ZipFile(apk_file, 'a', zipfile.ZIP_DEFLATED) 
-	empty_channel_file = "META-INF/mchpkg_{channel}".format(channel=channel_name)
-	print('adding channel file ' + empty_channel_file)
-	zipped.write(channel_file, empty_channel_file)
-	zipped.close()
+    zipped = zipfile.ZipFile(apk_file, 'a', zipfile.ZIP_DEFLATED)
+    empty_channel_file = "META-INF/mchpkg_{channel}".format(channel=channel_name)
+    print('adding channel file ' + empty_channel_file)
+    zipped.write(channel_file, empty_channel_file)
+    zipped.close()
+
 
 def create_empty_file(name):
-	f = open(name, 'w')
-	f.close()
+    f = open(name, 'w')
+    f.close()
 
-def ensure_output_dir(dir):
-    exist = os.path.exists(dir)
+
+def ensure_output_dir(out_dir):
+    exist = os.path.exists(out_dir)
     if not exist:
-        os.makedirs(dir)
+        os.makedirs(out_dir)
+
 
 def zip_output(apks, output_file):
     zipped = zipfile.ZipFile(output_file, 'w', zipfile.ZIP_DEFLATED)
@@ -30,6 +34,7 @@ def zip_output(apks, output_file):
         zipped.close()
     for apk in apks:
         os.remove(apk)
+
 
 if __name__ == '__main__':
     assert len(sys.argv[1]) > 0
@@ -44,7 +49,7 @@ if __name__ == '__main__':
     ensure_output_dir(OUTPUT_DIR)
 
     try:
-        #os.chdir(OUTPUT_DIR)
+        # os.chdir(OUTPUT_DIR)
         create_empty_file(EMPTY_FILE)
         for line in config_file:
             config = line.strip()
