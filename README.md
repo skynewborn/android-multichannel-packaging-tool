@@ -1,3 +1,5 @@
+This repository is deprecated. Refer to [VasDolly](https://github.com/Tencent/VasDolly) or [Walle](https://github.com/Meituan-Dianping/walle) if you need a packaging tool for multi-channels.
+
 Android多渠道打包工具
 ==================
 
